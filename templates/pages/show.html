@@ -4,6 +4,9 @@
 
     <div class="page-header">
         <h1>Fyyur Search!</h1>
+        <form action="" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            </form>
     </div>
     <p class="lead"> Show Search </p>
 

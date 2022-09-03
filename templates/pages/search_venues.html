@@ -2,6 +2,7 @@
 {% block title %}Fyyur | Venues Search{% endblock %}
 {% block content %}
 <h3>Number of search results for "{{ search_term }}": {{ results.count }}</h3>
+<form><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 <ul class="items">
 	{% for venue in results.data %}
 	<li>
@@ -14,4 +15,6 @@
 	</li>
 	{% endfor %}
 </ul>
+{{form.hidden_tag()}}
+</form>
 {% endblock %}
