@@ -125,20 +125,12 @@ def search_venues():
 @app.route('/venues/<int:venue_id>')
 def show_venue(venue_id):
     
-    #venue = Venue.query.get(venue_id)
-    #form.genres.data = venue.genres.split(",") # convert genre string back to array
-    #setattr(venue, "genres", venue.genres.split(",")) # convert genre string back to array
-    
-   
-    #past_shows = list(filter(lambda show: show.start_time < datetime.now(), venue.shows))
-    #venue = Venue.query.join(Venue.shows).filter(Venue.id == venue_id).first()
-    
     venue = Venue.query.get(venue_id)
     
     # past shows        
     past_shows = db.session.query(Show) \
-	.join(Venue).filter(Show.venue_id == venue_id) \
-    .filter(Show.start_time > datetime.date.now()) \
+	.join(Artist).filter(Show.venue_id == venue_id) \
+    .filter(Show.start_time < datetime.now()) \
     .order_by(Show.start_time) \
 	.all()
     
@@ -158,8 +150,8 @@ def show_venue(venue_id):
     #upcoming_shows = list(filter(lambda show: show.start_time > datetime.now(), venue.shows))
     
     upcoming_shows = db.session.query(Show) \
-	.join(Venue).filter(Show.venue_id == venue_id) \
-    .filter(Show.start_time > datetime.date.now()) \
+	.join(Artist).filter(Show.venue_id == venue_id) \
+    .filter(Show.start_time > datetime.now()) \
     .order_by(Show.start_time) \
 	.all()
     
