@@ -75,10 +75,9 @@ class Show(db.Model):
     start_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'<Show {self.id} Venue {self.venue_id} Artist {self.artist_id} Start time {self.start_time}>'
+        return f'<Show {self.id} Venue {self.venue_id} Start time {self.start_time} Artist {self.artist_id}>'
 
 
  # implement any missing fields, as a database migration using Flask-Migrate
 
 # implement Show and Artist models, and complete all model relationships and properties, as a database migration.
-
